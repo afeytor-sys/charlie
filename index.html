@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Thomas Könitz – Montageservice NRW</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ─── HERO ─── */
+    .hero {
+      min-height: calc(100vh - 80px);
+      display: flex; align-items: center;
+      padding: 5rem 2.5rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 85% 40%, rgba(244,161,24,0.11) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 10% 75%, rgba(224,92,0,0.07) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 1160px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .hero-left {}
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(244,161,24,0.1); border: 1px solid rgba(244,161,24,0.28);
+      border-radius: 50px; padding: 0.35rem 0.9rem;
+      font-size: 0.74rem; font-weight: 600; color: var(--accent);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 1.6rem;
+      animation: fadeUp 0.5s ease both;
+    }
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.4rem;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+    h1 .hl { color: var(--accent); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(245,242,238,0.55);
+      line-height: 1.7;
+      margin-bottom: 2.2rem;
+      font-weight: 300;
+      animation: fadeUp 0.5s 0.2s ease both;
+    }
+    .hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; animation: fadeUp 0.5s 0.3s ease both; }
+    .hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; flex-wrap: wrap; animation: fadeUp 0.5s 0.4s ease both; }
+    .stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .stat-label { font-size: 0.78rem; color: var(--gray); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* right side cards */
+    .hero-right {
+      display: flex; flex-direction: column; gap: 1rem;
+      animation: fadeLeft 0.7s 0.4s ease both;
+    }
+    .hcard {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 1.2rem 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .hcard:hover { transform: translateX(-5px); border-color: rgba(244,161,24,0.25); }
+    .hcard-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .hcard-big { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; }
+    .hcard-small { font-size: 0.78rem; color: var(--gray); margin-top: 2px; }
+
+    /* ─── WHY ─── */
+    #why { background: var(--card2); }
+    .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .why-card {
+      background: var(--card); border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 18px; padding: 2rem;
+      transition: all 0.3s;
+    }
+    .why-card:hover { transform: translateY(-4px); border-color: rgba(244,161,24,0.22); }
+    .why-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .why-title { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .why-desc { font-size: 0.87rem; color: rgba(245,242,238,0.5); line-height: 1.65; }
+
+    /* ─── MINI SERVICES ─── */
+    #services-preview { background: var(--black); }
+    .svc-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 2.5rem; }
+    .svc-mini {
+      background: var(--card); border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 14px; padding: 1.4rem 1.5rem;
+      display: flex; align-items: center; gap: 0.9rem;
+      text-decoration: none; color: var(--white);
+      transition: all 0.25s;
+    }
+    .svc-mini:hover { border-color: rgba(244,161,24,0.3); transform: translateY(-3px); }
+    .svc-mini-icon { font-size: 1.6rem; }
+    .svc-mini-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; }
+    .svc-mini-tag { font-size: 0.72rem; color: var(--gray); margin-top: 1px; }
+    .svc-cta { text-align: center; }
+
+    /* ─── TESTIMONIALS ─── */
+    #reviews { background: var(--card2); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .review-card {
+      background: var(--card); border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 18px; padding: 1.8rem;
+    }
+    .review-stars { color: var(--accent); font-size: 0.9rem; margin-bottom: 0.8rem; letter-spacing: 2px; }
+    .review-text { font-size: 0.88rem; color: rgba(245,242,238,0.65); line-height: 1.7; margin-bottom: 1.2rem; font-style: italic; }
+    .review-author { font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 700; }
+    .review-loc { font-size: 0.74rem; color: var(--gray); }
+
+    @media(max-width:900px){
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .why-grid, .svc-row, .reviews-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width:580px){
+      .why-grid, .svc-row, .reviews-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── VIDEO ─── */
+    #video-section { background: var(--black); }
+    .video-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .video-wrapper {
+      position: relative; border-radius: 22px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+      background: var(--card);
+    }
+    .video-wrapper video { width: 100%; display: block; border-radius: 22px; }
+    .video-wrapper::before {
+      content: ''; position: absolute; inset: 0; border-radius: 22px;
+      background: linear-gradient(135deg, rgba(244,161,24,0.08) 0%, transparent 50%);
+      pointer-events: none; z-index: 1;
+    }
+    .video-text p { font-size: 0.97rem; color: rgba(245,242,238,0.55); line-height: 1.75; font-weight: 300; margin-bottom: 1.8rem; }
+    .video-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .chip { background: rgba(244,161,24,0.08); border: 1px solid rgba(244,161,24,0.18); border-radius: 50px; padding: 0.35rem 0.9rem; font-size: 0.78rem; color: var(--accent); font-weight: 600; }
+
+    /* ─── FOTOS ─── */
+    #fotos-section { background: var(--card2); }
+    .fotos-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1rem; }
+    .foto-item { border-radius: 18px; overflow: hidden; position: relative; cursor: pointer; }
+    .foto-item.big { grid-column: span 2; grid-row: span 2; }
+    .foto-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; border-radius: 18px; min-height: 180px; }
+    .foto-item:hover img { transform: scale(1.05); }
+    .foto-overlay { position: absolute; inset: 0; border-radius: 18px; background: linear-gradient(to top, rgba(17,17,17,0.55) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s; }
+    .foto-item:hover .foto-overlay { opacity: 1; }
+
+    /* home lightbox */
+    .hlightbox { position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.93); display: none; align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(10px); }
+    .hlightbox.open { display: flex; }
+    .hlightbox img { max-width: 90vw; max-height: 88vh; border-radius: 18px; object-fit: contain; box-shadow: 0 30px 80px rgba(0,0,0,0.8); animation: lbIn 0.25s ease; }
+    @keyframes lbIn { from{opacity:0;transform:scale(0.93)} to{opacity:1;transform:scale(1)} }
+    .hlb-close { position: absolute; top: 1.5rem; right: 1.5rem; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); border: none; color: var(--white); font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .hlb-close:hover { background: rgba(244,161,24,0.4); }
+    .hlb-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: var(--white); font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .hlb-nav:hover { background: var(--accent); color: var(--black); border-color: var(--accent); }
+    .hlb-prev { left: 1.5rem; }
+    .hlb-next { right: 1.5rem; }
+    .hlb-counter { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); font-family: 'Syne', sans-serif; font-size: 0.8rem; color: rgba(245,242,238,0.45); background: rgba(0,0,0,0.4); padding: 0.3rem 1rem; border-radius: 50px; }
+
+    @media(max-width:900px){
+      .video-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .fotos-grid { grid-template-columns: 1fr 1fr; }
+      .foto-item.big { grid-column: span 2; grid-row: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Montageservice <span>Könitz</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Start</a></li>
+    <li><a href="leistungen.html">Leistungen</a></li>
+    <li><a href="preise.html">Preise</a></li>
+    <li><a href="ueber.html">Über mich</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+  </ul>
+  <a href="kontakt.html" class="nav-cta">Jetzt anfragen</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-tag">📍 Castrop-Rauxel · Ganz NRW</div>
+        <h1>Der eine<br>für die <span class="hl">Montage</span><br>in NRW</h1>
+        <p class="hero-sub">Möbel auf, Werkzeug raus – Charlie macht das! Zuverlässig, sorgfältig und mit einem Lächeln. Von Castrop-Rauxel aus in ganz Nordrhein-Westfalen unterwegs.</p>
+        <div class="hero-actions">
+          <a href="kontakt.html" class="btn-primary">📋 Kostenlos anfragen</a>
+          <a href="leistungen.html" class="btn-secondary">Was ich mache →</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num">100%</div><div class="stat-label">Zufriedenheit</div></div>
+          <div><div class="stat-num">NRW</div><div class="stat-label">Einsatzgebiet</div></div>
+          <div><div class="stat-num">⚡</div><div class="stat-label">Schnell & fair</div></div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hcard"><div class="hcard-icon">🔧</div><div><div class="hcard-big">Profi-Werkzeug</div><div class="hcard-small">Alles dabei, was's braucht</div></div></div>
+        <div class="hcard"><div class="hcard-icon">📍</div><div><div class="hcard-big">Ganz NRW</div><div class="hcard-small">Von Köln bis Münster</div></div></div>
+        <div class="hcard"><div class="hcard-icon">⭐</div><div><div class="hcard-big">Top-Bewertungen</div><div class="hcard-small">Kunden lieben mich 😄</div></div></div>
+        <div class="hcard"><div class="hcard-icon">💬</div><div><div class="hcard-big">Ehrliche Preise</div><div class="hcard-small">Kein Kleingedrucktes</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO TEXT -->
+  <section style="background: var(--card2); padding: 4rem 2.5rem 0;">
+    <div class="section-inner">
+      <div class="reveal" style="max-width: 780px; margin: 0 auto; text-align: center;">
+        <p style="font-size:1.08rem; color:rgba(245,242,238,0.65); line-height:1.85; font-weight:300;">
+          Ich heiße <strong style="color:var(--white); font-weight:600;">Thomas</strong>, die meisten nennen mich <strong style="color:var(--accent); font-weight:600;">Charlie</strong>. Aber das ist eine andere Geschichte. Ich bin Ihr Montageprofi aus <strong style="color:var(--white); font-weight:600;">Castrop-Rauxel</strong>. Seit Jahren bin ich in ganz Nordrhein-Westfalen unterwegs, um Möbel aufzubauen, Küchen zu montieren und alles an die Wand zu bringen, was an die Wand gehört.
+        </p>
+        <p style="font-size:1.08rem; color:rgba(245,242,238,0.65); line-height:1.85; font-weight:300; margin-top:1.2rem;">
+          Handwerk ist für mich keine Pflicht – es macht mir <strong style="color:var(--white); font-weight:600;">wirklich Spaß</strong>. Wenn am Ende alles steht, die Küche passt und der Kunde strahlt, dann ist das für mich der beste Teil des Tages. Kein Auftrag ist zu klein, kein Schrank zu groß.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Warum Charlie?</span>
+        <h2>Handwerk mit Herz 🤝</h2>
+        <p class="section-sub">Ich bin nicht nur ein Monteur – ich bin der Typ, der noch lächelt, wenn der Schrank 300 Teile hat.</p>
+      </div>
+      <div class="why-grid reveal">
+        <div class="why-card"><span class="why-icon">⏰</span><div class="why-title">Pünktlich & zuverlässig</div><p class="why-desc">Ich sage, wann ich komme – und ich komme. Keine langen Wartezeiten, kein „ich melde mich nochmal".</p></div>
+        <div class="why-card"><span class="why-icon">💰</span><div class="why-title">Faire Preise</div><p class="why-desc">Transparente Angebote, kein Kleingedrucktes. Das finale Angebot wird individuell und ehrlich kalkuliert.</p></div>
+        <div class="why-card"><span class="why-icon">😄</span><div class="why-title">Gute Laune inklusive</div><p class="why-desc">Handwerk muss keinen Spaß kosten – aber mit mir macht's mehr Spaß. Garantiert.</p></div>
+        <div class="why-card"><span class="why-icon">🛡️</span><div class="why-title">Sorgfältige Arbeit</div><p class="why-desc">Kein Teil bleibt übrig. Ich arbeite sauber, präzise und achte auf jedes Detail – auch hinter dem Schrank.</p></div>
+        <div class="why-card"><span class="why-icon">🚗</span><div class="why-title">Mobil in ganz NRW</div><p class="why-desc">Von Castrop-Rauxel aus bin ich in Dortmund, Essen, Köln, Münster und überall dazwischen einsatzbereit.</p></div>
+        <div class="why-card"><span class="why-icon">📞</span><div class="why-title">Schnelle Antwort</div><p class="why-desc">Anfrage rein, Angebot raus – meist noch am selben Tag. Weil Ihre Zeit genauso wertvoll ist wie meine.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES PREVIEW -->
+  <section id="services-preview">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Leistungen</span>
+        <h2>Was ich für Sie mache</h2>
+        <p class="section-sub">Vom Einzelmöbel bis zur Großküche – hier ein kurzer Überblick.</p>
+      </div>
+      <div class="svc-row reveal">
+        <a href="leistungen.html" class="svc-mini"><div class="svc-mini-icon">🛋️</div><div><div class="svc-mini-name">Möbelmontage</div><div class="svc-mini-tag">IKEA & alle Marken</div></div></a>
+        <a href="leistungen.html" class="svc-mini"><div class="svc-mini-icon">🍳</div><div><div class="svc-mini-name">Küchenmontage</div><div class="svc-mini-tag">Komplett & Teilmontage</div></div></a>
+        <a href="leistungen.html" class="svc-mini"><div class="svc-mini-icon">🚿</div><div><div class="svc-mini-name">Badmöbel</div><div class="svc-mini-tag">Spiegel, Schränke & mehr</div></div></a>
+        <a href="leistungen.html" class="svc-mini"><div class="svc-mini-icon">🖥️</div><div><div class="svc-mini-name">Büromöbel</div><div class="svc-mini-tag">Privat & Gewerbe</div></div></a>
+        <a href="leistungen.html" class="svc-mini"><div class="svc-mini-icon">🏗️</div><div><div class="svc-mini-name">Objekteinrichtungen</div><div class="svc-mini-tag">Filialen & Großprojekte</div></div></a>
+        <a href="leistungen.html" class="svc-mini"><div class="svc-mini-icon">🔩</div><div><div class="svc-mini-name">Extras & Sonstiges</div><div class="svc-mini-tag">Lampen, TV, Bilder...</div></div></a>
+      </div>
+      <div class="svc-cta reveal">
+        <a href="leistungen.html" class="btn-secondary">Alle Leistungen ansehen →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section id="video-section">
+    <div class="section-inner">
+      <div class="video-layout">
+        <div class="video-wrapper reveal">
+          <video controls preload="metadata">
+            <source src="videos/charlie video 1.mp4" type="video/mp4"/>
+            Ihr Browser unterstützt kein Video.
+          </video>
+        </div>
+        <div class="video-text reveal">
+          <span class="section-tag">In Aktion</span>
+          <h2>Ein Blick, wie ich arbeite 🎬</h2>
+          <p>Ich arbeite sorgfältig, effizient und immer mit einem Lächeln. Von der ersten Schraube bis zum letzten Handgriff.</p>
+          <div class="video-chips">
+            <span class="chip">⚡ Schnell & präzise</span>
+            <span class="chip">🛡️ Sauber & zuverlässig</span>
+            <span class="chip">😄 Mit Spaß dabei</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOTOS -->
+  <section id="fotos-section">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Einblicke</span>
+        <h2>Aus dem Arbeitsalltag 📸</h2>
+        <p class="section-sub">Echte Projekte, echte Ergebnisse – Charlie in seinem Element.</p>
+      </div>
+      <div class="fotos-grid reveal">
+        <div class="foto-item big" onclick="openHLightbox(0)">
+          <img src="fotos/hf_20260222_202534_9ca16151-b838-4e2a-9e59-c90dde139d6c.png" alt="Thomas Könitz Montageservice"/>
+          <div class="foto-overlay"></div>
+        </div>
+        <div class="foto-item" onclick="openHLightbox(1)">
+          <img src="fotos/hf_20260223_084250_a1537a47-c52e-4b26-8870-83f79f5b75a6.png" alt="Thomas Könitz Montageservice"/>
+          <div class="foto-overlay"></div>
+        </div>
+        <div class="foto-item" onclick="openHLightbox(2)">
+          <img src="fotos/hf_20260223_135809_95f7054a-ea22-4424-99b8-3a8201ce5d5c.jpeg" alt="Thomas Könitz Montageservice"/>
+          <div class="foto-overlay"></div>
+        </div>
+        <div class="foto-item" onclick="openHLightbox(3)">
+          <img src="fotos/hf_20260222_191656_e339d7df-5487-408a-be30-630c65f3428b.png" alt="Thomas Könitz Montageservice"/>
+          <div class="foto-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Kundenstimmen</span>
+        <h2>Was Kunden sagen 💬</h2>
+        <p class="section-sub">Überzeugen Sie sich selbst – die Arbeit spricht für sich.</p>
+      </div>
+      <div class="reviews-grid reveal">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Charlie war super pünktlich, hat den Schrank blitzschnell aufgebaut und dabei noch für gute Stimmung gesorgt. So macht Montageservice Spaß!"</p>
+          <div class="review-author">Sandra K.</div>
+          <div class="review-loc">Dortmund</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Küche komplett montiert, alles sauber abgestimmt, kein Teil vergessen. Fairer Preis, freundliche Art – klare Empfehlung!"</p>
+          <div class="review-author">Marcus H.</div>
+          <div class="review-loc">Bochum</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Habe Charlie für mein Büro gebucht – 8 Schreibtische und Regale. Alles top erledigt, pünktlich fertig. Sehr zu empfehlen!"</p>
+          <div class="review-author">Julia M.</div>
+          <div class="review-loc">Essen</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Montageservice <span>Könitz</span></div>
+    <div class="footer-sub">Ihr Montageprofi aus Castrop-Rauxel · Ganz NRW</div>
+    <div class="footer-links">
+      <a href="index.html">Start</a>
+      <a href="leistungen.html">Leistungen</a>
+      <a href="preise.html">Preise</a>
+      <a href="ueber.html">Über mich</a>
+      <a href="kontakt.html">Kontakt</a>
+    </div>
+    <div class="footer-links" style="margin-top: 0.5rem;">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutzerklärung</a>
+    </div>
+    <div class="footer-copy">© 2025 Montageservice Könitz · Castrop-Rauxel, NRW</div>
+  </div>
+</footer>
+
+<!-- HOME LIGHTBOX -->
+<div class="hlightbox" id="hlightbox" onclick="if(event.target===this)closeHLB()">
+  <button class="hlb-close" onclick="closeHLB()">✕</button>
+  <button class="hlb-nav hlb-prev" onclick="hlbNav(-1)">‹</button>
+  <img id="hlbImg" src="" alt=""/>
+  <button class="hlb-nav hlb-next" onclick="hlbNav(1)">›</button>
+  <div class="hlb-counter" id="hlbCounter"></div>
+</div>
+
+<a href="kontakt.html" class="fab" title="Anfragen">📋</a>
+<script src="main.js"></script>
+<script>
+const hPhotos = [
+  'fotos/hf_20260222_202534_9ca16151-b838-4e2a-9e59-c90dde139d6c.png',
+  'fotos/hf_20260223_084250_a1537a47-c52e-4b26-8870-83f79f5b75a6.png',
+  'fotos/hf_20260223_135809_95f7054a-ea22-4424-99b8-3a8201ce5d5c.jpeg',
+  'fotos/hf_20260222_191656_e339d7df-5487-408a-be30-630c65f3428b.png',
+];
+let hlbIdx = 0;
+
+function openHLightbox(i) {
+  hlbIdx = i;
+  document.getElementById('hlbImg').src = hPhotos[hlbIdx];
+  document.getElementById('hlbCounter').textContent = (hlbIdx + 1) + ' / ' + hPhotos.length;
+  document.getElementById('hlightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function hlbNav(dir) {
+  hlbIdx = (hlbIdx + dir + hPhotos.length) % hPhotos.length;
+  document.getElementById('hlbImg').src = hPhotos[hlbIdx];
+  document.getElementById('hlbCounter').textContent = (hlbIdx + 1) + ' / ' + hPhotos.length;
+}
+function closeHLB() {
+  document.getElementById('hlightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('hlightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') hlbNav(1);
+  if (e.key === 'ArrowLeft') hlbNav(-1);
+  if (e.key === 'Escape') closeHLB();
+});
+</script>
+</body>
+</html>

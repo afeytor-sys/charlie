@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Kontakt – Montageservice Könitz NRW</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .kontakt-layout {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start;
+    }
+
+    /* info side */
+    .k-item {
+      display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.8rem;
+    }
+    .k-icon {
+      width: 46px; height: 46px; background: rgba(244,161,24,0.08);
+      border: 1px solid rgba(244,161,24,0.18); border-radius: 13px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .k-label { font-size: 0.72rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.25rem; }
+    .k-value { font-size: 0.97rem; color: var(--white); font-weight: 500; }
+    .k-value a { color: var(--accent); text-decoration: none; }
+    .k-value a:hover { text-decoration: underline; }
+
+    .available-box {
+      background: var(--card); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px; padding: 1.5rem; margin-top: 2rem;
+    }
+    .avail-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--accent); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .avail-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.83rem; }
+    .avail-row:last-child { border-bottom: none; }
+    .avail-day { color: rgba(245,242,238,0.65); }
+    .avail-time { color: var(--white); font-weight: 500; }
+    .avail-time.closed { color: var(--gray); }
+
+    /* form */
+    .form-box {
+      background: var(--card); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 24px; padding: 2.5rem;
+    }
+    .form-title { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; margin-bottom: 0.3rem; }
+    .form-sub { font-size: 0.83rem; color: var(--gray); margin-bottom: 2rem; line-height: 1.5; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.1rem; }
+    label { font-size: 0.72rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.07em; display: block; margin-bottom: 0.4rem; }
+    input, textarea, select {
+      width: 100%; background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 10px;
+      padding: 0.8rem 1rem; color: var(--white);
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      outline: none; transition: border-color 0.2s; appearance: none;
+    }
+    input:focus, textarea:focus, select:focus { border-color: rgba(244,161,24,0.45); background: rgba(255,255,255,0.05); }
+    textarea { resize: vertical; min-height: 110px; }
+    select option { background: #1c1c1c; }
+
+    .char-count { font-size: 0.7rem; color: var(--gray); text-align: right; margin-top: 0.3rem; }
+
+    .submit-btn {
+      width: 100%; background: var(--accent); color: var(--black);
+      border: none; padding: 1rem; border-radius: 12px;
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem;
+      cursor: pointer; transition: all 0.2s; margin-top: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+    .submit-btn:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(244,161,24,0.35); }
+
+    /* success */
+    .form-success {
+      display: none; text-align: center; padding: 3rem 2rem;
+    }
+    .success-icon { font-size: 3.5rem; margin-bottom: 1rem; animation: float 2s ease-in-out infinite; display: block; }
+    .form-success h3 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; }
+    .form-success p { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
+
+    @media(max-width:900px){
+      .kontakt-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Montageservice <span>Könitz</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Start</a></li>
+    <li><a href="leistungen.html">Leistungen</a></li>
+    <li><a href="preise.html">Preise</a></li>
+    <li><a href="ueber.html">Über mich</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+  </ul>
+  <a href="kontakt.html" class="nav-cta">Jetzt anfragen</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page">
+
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-inner">
+      <span class="section-tag">Kontakt</span>
+      <h1>Schreiben Sie<br>mir! ✉️</h1>
+      <p>Kurze Nachricht genügt – ich antworte schnell mit einem fairen Angebot. Kein Stress, kein Kleingedrucktes.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-inner">
+      <div class="kontakt-layout">
+
+        <div class="reveal">
+          <div class="k-item">
+            <div class="k-icon">📍</div>
+            <div><div class="k-label">Standort</div><div class="k-value">Castrop-Rauxel, NRW</div></div>
+          </div>
+          <div class="k-item">
+            <div class="k-icon">📱</div>
+            <div><div class="k-label">Telefon & WhatsApp</div><div class="k-value"><a href="tel:+4915000000000">Auf Anfrage</a></div></div>
+          </div>
+          <div class="k-item">
+            <div class="k-icon">✉️</div>
+            <div><div class="k-label">E-Mail</div><div class="k-value"><a href="/cdn-cgi/l/email-protection#e1888f878ea195898e8c8092cc8c8e8f9580868492849397888284cf8584"><span class="__cf_email__" data-cfemail="7e171018113e0a1611131f0d531311100a1f191b0d1b0c08171d1b501a1b">[email&#160;protected]</span></a></div></div>
+          </div>
+          <div class="k-item">
+            <div class="k-icon">🗺️</div>
+            <div><div class="k-label">Einsatzgebiet</div><div class="k-value">Ganz Nordrhein-Westfalen</div></div>
+          </div>
+
+          <div class="available-box">
+            <div class="avail-title">🕐 Erreichbarkeit</div>
+            <div class="avail-row"><span class="avail-day">Montag – Freitag</span><span class="avail-time">08:00 – 18:00 Uhr</span></div>
+            <div class="avail-row"><span class="avail-day">Samstag</span><span class="avail-time">09:00 – 14:00 Uhr</span></div>
+            <div class="avail-row"><span class="avail-day">Sonntag</span><span class="avail-time closed">Geschlossen</span></div>
+          </div>
+        </div>
+
+        <div class="form-box reveal">
+          <div id="formContent">
+            <div class="form-title">Anfrage senden 🚀</div>
+            <div class="form-sub">Ich melde mich in der Regel noch am selben Tag – meist schneller als gedacht 😄</div>
+
+            <form id="kontaktForm" action="https://formspree.io/f/xyknzkne" method="POST">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fname">Vorname *</label>
+                  <input type="text" id="fname" name="vorname" placeholder="Max" required/>
+                </div>
+                <div class="form-group">
+                  <label for="lname">Nachname *</label>
+                  <input type="text" id="lname" name="nachname" placeholder="Mustermann" required/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">E-Mail *</label>
+                <input type="email" id="email" name="email" placeholder="max@email.de" required/>
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon / WhatsApp</label>
+                <input type="tel" id="phone" name="telefon" placeholder="+49 ..."/>
+              </div>
+              <div class="form-group">
+                <label for="service">Was soll montiert werden? *</label>
+                <select id="service" name="leistung" required>
+                  <option value="">Bitte auswählen...</option>
+                  <option>Möbelmontage (IKEA & Co.)</option>
+                  <option>Küchenmontage</option>
+                  <option>Badezimmermöbel</option>
+                  <option>Büromöbel</option>
+                  <option>Objekteinrichtung</option>
+                  <option>Extras & Kleinarbeiten</option>
+                  <option>Sonstiges</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ort">Montageort (PLZ / Ort) *</label>
+                <input type="text" id="ort" name="montageort" placeholder="z.B. 44575 Castrop-Rauxel" required/>
+              </div>
+              <div class="form-group">
+                <label for="message">Kurze Beschreibung *</label>
+                <textarea id="message" name="nachricht" maxlength="500" oninput="updateCount(this)" placeholder="Was soll montiert werden? Anzahl Möbel, Hersteller, Etage... Je mehr Details, desto schneller das Angebot!" required></textarea>
+                <div class="char-count" id="charCount">0 / 500</div>
+              </div>
+              <button type="submit" class="submit-btn">📋 Anfrage absenden</button>
+            </form>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <span class="success-icon">🎉</span>
+            <h3>Super, Anfrage erhalten!</h3>
+            <p>Danke! Charlie meldet sich so schnell wie möglich – meist noch heute. Bis gleich! 😄</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Montageservice <span>Könitz</span></div>
+    <div class="footer-sub">Ihr Montageprofi aus Castrop-Rauxel · Ganz NRW</div>
+    <div class="footer-links">
+      <a href="index.html">Start</a><a href="leistungen.html">Leistungen</a>
+      <a href="preise.html">Preise</a><a href="ueber.html">Über mich</a><a href="kontakt.html">Kontakt</a>
+    </div>
+    <div class="footer-links" style="margin-top: 0.5rem;">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutzerklärung</a>
+    </div>
+    <div class="footer-copy">© 2025 Montageservice Könitz · Castrop-Rauxel, NRW</div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+// ─── Char counter ───
+function updateCount(el) {
+  document.getElementById('charCount').textContent = el.value.length + ' / 500';
+}
+
+// ─── Formspree AJAX submit ───
+document.getElementById('kontaktForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.submit-btn');
+  btn.textContent = '⏳ Wird gesendet...';
+  btn.disabled = true;
+
+  try {
+    const response = await fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      btn.textContent = '❌ Fehler – bitte erneut versuchen';
+      btn.disabled = false;
+    }
+  } catch (err) {
+    btn.textContent = '❌ Fehler – bitte erneut versuchen';
+    btn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Leistungen – Montageservice Könitz NRW</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 1.5rem; }
+    .svc-card {
+      background: var(--card); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 22px; padding: 2.2rem;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .svc-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(244,161,24,0.06) 0%, transparent 55%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .svc-card:hover { border-color: rgba(244,161,24,0.28); transform: translateY(-5px); box-shadow: 0 24px 55px rgba(0,0,0,0.45); }
+    .svc-card:hover::after { opacity: 1; }
+    .svc-icon { font-size: 2.5rem; margin-bottom: 1.3rem; display: block; }
+    .svc-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; margin-bottom: 0.7rem; }
+    .svc-desc { font-size: 0.88rem; color: rgba(245,242,238,0.55); line-height: 1.7; margin-bottom: 1.3rem; }
+    .svc-list { list-style: none; }
+    .svc-list li {
+      font-size: 0.83rem; color: rgba(245,242,238,0.6);
+      padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .svc-list li::before { content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+    .svc-badge {
+      display: inline-block; margin-top: 1.2rem;
+      background: rgba(244,161,24,0.1); color: var(--accent);
+      border-radius: 50px; padding: 0.25rem 0.8rem;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+
+    /* big featured card */
+    .svc-card.featured {
+      grid-column: span 2;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;
+    }
+    .svc-card.featured .svc-visual {
+      background: rgba(244,161,24,0.07); border: 1px solid rgba(244,161,24,0.15);
+      border-radius: 16px; height: 200px;
+      display: flex; align-items: center; justify-content: center; font-size: 5rem;
+    }
+
+    /* process */
+    #process { background: var(--black); }
+    .process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; position: relative; }
+    .process-steps::before {
+      content: ''; position: absolute;
+      top: 28px; left: 10%; right: 10%; height: 2px;
+      background: linear-gradient(90deg, var(--accent), rgba(244,161,24,0.2));
+      z-index: 0;
+    }
+    .step { text-align: center; position: relative; z-index: 1; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--card); border: 2px solid var(--accent);
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem;
+      color: var(--accent); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .step-title { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .step-desc { font-size: 0.8rem; color: var(--gray); line-height: 1.55; }
+
+    /* CTA banner */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(244,161,24,0.12) 0%, rgba(224,92,0,0.06) 100%);
+      border: 1px solid rgba(244,161,24,0.2);
+      border-radius: 24px; padding: 3rem; text-align: center;
+    }
+    .cta-banner h3 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 0.7rem; }
+    .cta-banner p { color: rgba(245,242,238,0.55); margin-bottom: 1.8rem; font-size: 0.95rem; }
+    .cta-banner-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    @media(max-width:900px){
+      .svc-card.featured { grid-column: span 1; display: block; }
+      .svc-card.featured .svc-visual { display: none; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+    }
+    @media(max-width:580px){ .process-steps { grid-template-columns: 1fr; } }
+
+    /* ─── GALERIE ─── */
+    #galerie { background: var(--card2); }
+
+    .filter-bar {
+      display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2.5rem;
+    }
+    .filter-btn {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 50px;
+      padding: 0.45rem 1.1rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600; font-size: 0.78rem;
+      color: rgba(245,242,238,0.55);
+      cursor: pointer; transition: all 0.2s;
+      letter-spacing: 0.03em;
+    }
+    .filter-btn:hover { border-color: rgba(244,161,24,0.3); color: var(--accent); }
+    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: var(--black); }
+
+    /* masonry via columns */
+    .masonry {
+      columns: 4; column-gap: 1rem;
+    }
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      display: block;
+      transition: transform 0.25s, opacity 0.3s;
+    }
+    .masonry-item.hidden { display: none; }
+    .masonry-item:hover { transform: scale(1.02); }
+    .masonry-item:hover .photo-overlay { opacity: 1; }
+    .masonry-item img {
+      width: 100%; display: block;
+      border-radius: 14px;
+      transition: transform 0.35s;
+    }
+    .masonry-item:hover img { transform: scale(1.05); }
+    .photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(17,17,17,0.75) 0%, transparent 55%);
+      border-radius: 14px;
+      opacity: 0; transition: opacity 0.3s;
+      display: flex; align-items: flex-end;
+      padding: 1rem;
+    }
+    .photo-label {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 0.78rem; color: var(--white);
+      background: rgba(244,161,24,0.9);
+      border-radius: 50px; padding: 0.2rem 0.7rem;
+    }
+
+    /* placeholder when no real photo */
+    .photo-placeholder {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.5rem; color: var(--gray);
+      font-size: 0.75rem; text-align: center;
+      padding: 1rem;
+    }
+    .photo-placeholder .ph-icon { font-size: 1.8rem; }
+    .photo-placeholder .ph-name { font-size: 0.7rem; color: rgba(122,122,122,0.7); word-break: break-all; }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.92);
+      display: none; align-items: center; justify-content: center;
+      padding: 2rem;
+      backdrop-filter: blur(8px);
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img {
+      max-width: 90vw; max-height: 88vh;
+      border-radius: 18px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+      object-fit: contain;
+      animation: lbIn 0.25s ease;
+    }
+    @keyframes lbIn { from { opacity:0; transform: scale(0.93); } to { opacity:1; transform: scale(1); } }
+    .lb-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); border: none;
+      color: var(--white); font-size: 1.3rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .lb-close:hover { background: rgba(244,161,24,0.3); }
+    .lb-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white); font-size: 1.2rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .lb-nav:hover { background: var(--accent); color: var(--black); border-color: var(--accent); }
+    .lb-prev { left: 1.5rem; }
+    .lb-next { right: 1.5rem; }
+    .lb-counter {
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 600;
+      color: rgba(245,242,238,0.5);
+      background: rgba(0,0,0,0.4); padding: 0.35rem 1rem; border-radius: 50px;
+    }
+    .lb-label {
+      position: absolute; bottom: 4rem; left: 50%; transform: translateX(-50%);
+      background: rgba(244,161,24,0.9); color: var(--black);
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.78rem;
+      padding: 0.3rem 1rem; border-radius: 50px; white-space: nowrap;
+    }
+
+    @media(max-width:900px){ .masonry { columns: 3; } }
+    @media(max-width:640px){ .masonry { columns: 2; } }
+    @media(max-width:400px){ .masonry { columns: 1; } }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Montageservice <span>Könitz</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Start</a></li>
+    <li><a href="leistungen.html">Leistungen</a></li>
+    <li><a href="preise.html">Preise</a></li>
+    <li><a href="ueber.html">Über mich</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+  </ul>
+  <a href="kontakt.html" class="nav-cta">Jetzt anfragen</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page">
+
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-inner">
+      <span class="section-tag">Leistungen</span>
+      <h1>Was ich<br>für Sie tue 🔧</h1>
+      <p>Von der Küche bis zum Kleiderschrank – ich montiere alles, was montiert werden muss. Sauber, schnell und mit einem Lächeln.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-inner">
+      <div class="services-grid">
+
+        <div class="svc-card featured reveal">
+          <div>
+            <span class="svc-icon">🍳</span>
+            <div class="svc-title">Küchenmontage</div>
+            <p class="svc-desc">Küchen aller Hersteller – von IKEA bis Nobilia, von Nolte bis Express. Ich montiere Ober- und Unterschränke, Arbeitsplatten, Elektrogeräte und alle Anschlüsse. Passgenau nach Planung oder frei Hand.</p>
+            <ul class="svc-list">
+              <li>IKEA Küchen (Sektion, Metod & Co.)</li>
+              <li>Markenküchen aller Art</li>
+              <li>Arbeitsplatten & Sockelleisten</li>
+              <li>Anschluss von Ceranfeld & Backofen</li>
+            </ul>
+            <span class="svc-badge">⭐ Spezialisiert</span>
+          </div>
+          <div class="svc-visual">🍳</div>
+        </div>
+
+        <div class="svc-card reveal">
+          <span class="svc-icon">🛋️</span>
+          <div class="svc-title">Möbelmontage</div>
+          <p class="svc-desc">IKEA, XXXLutz, Höffner, Amazon – egal woher der Karton kommt, ich baue es auf. Kein Teil bleibt übrig. Versprochen.</p>
+          <ul class="svc-list">
+            <li>Schränke, Kommoden, Regale</li>
+            <li>Betten & Schlafzimmereinrichtung</li>
+            <li>Sofas & Wohnzimmermöbel</li>
+          </ul>
+          <span class="svc-badge">Beliebt</span>
+        </div>
+
+        <div class="svc-card reveal">
+          <span class="svc-icon">🚿</span>
+          <div class="svc-title">Badezimmermöbel</div>
+          <p class="svc-desc">Spiegelschränke, Waschtischunterschränke, Regale und Zubehör – damit Ihr Bad genau so aussieht, wie Sie es sich vorstellen.</p>
+          <ul class="svc-list">
+            <li>Spiegelschränke & Wandspiegel</li>
+            <li>Waschtischunterschränke</li>
+            <li>Handtuchhalter & Accessoires</li>
+          </ul>
+          <span class="svc-badge">Komplett</span>
+        </div>
+
+        <div class="svc-card reveal">
+          <span class="svc-icon">🖥️</span>
+          <div class="svc-title">Büromöbel</div>
+          <p class="svc-desc">Homeoffice oder Firmenbüro – Schreibtische, Aktenschränke, Trennwände. Ich sorge dafür, dass Ihr Arbeitsplatz steht, bevor der erste Kaffee kalt wird.</p>
+          <ul class="svc-list">
+            <li>Schreibtische & Bürostühle</li>
+            <li>Aktenschränke & Regalsysteme</li>
+            <li>Trennwände & Raumteiler</li>
+          </ul>
+          <span class="svc-badge">Privat & Gewerbe</span>
+        </div>
+
+        <div class="svc-card reveal">
+          <span class="svc-icon">🏗️</span>
+          <div class="svc-title">Objekteinrichtungen</div>
+          <p class="svc-desc">Filialmontage, Ladeneinrichtungen oder größere Büroprojekte? Kein Problem. Mit Erfahrung und Profi-Werkzeug stemme ich auch umfangreiche Aufträge.</p>
+          <ul class="svc-list">
+            <li>Handelsketten & Filialen</li>
+            <li>Showrooms & Verkaufsflächen</li>
+            <li>Großraumbüros & Konferenzräume</li>
+          </ul>
+          <span class="svc-badge">Großprojekte</span>
+        </div>
+
+        <div class="svc-card reveal">
+          <span class="svc-icon">🔩</span>
+          <div class="svc-title">Extras & Sonstiges</div>
+          <p class="svc-desc">Alles, wofür man einen Bohrer und zwei geübte Hände braucht. Fragen kostet nichts – ich schaue mir gerne an, was Sie brauchen.</p>
+          <ul class="svc-list">
+            <li>Lampen & Deckenleuchten</li>
+            <li>TV-Wandhalterungen</li>
+            <li>Bilderaufhängung & Dekoelemente</li>
+          </ul>
+          <span class="svc-badge">Flexibel</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">So läuft's ab</span>
+        <h2>In 4 Schritten zum fertigen Möbel</h2>
+        <p class="section-sub">Einfach, unkompliziert und ohne Überraschungen.</p>
+      </div>
+      <div class="process-steps reveal">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-title">Anfragen</div>
+          <p class="step-desc">Formular ausfüllen oder direkt anrufen. Was, wann, wo – kurze Info reicht.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-title">Angebot erhalten</div>
+          <p class="step-desc">Ich melde mich schnell mit einem fairen, transparenten Angebot.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-title">Termin vereinbaren</div>
+          <p class="step-desc">Wir finden gemeinsam einen passenden Termin – flexibel und unkompliziert.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-title">Fertig! 🎉</div>
+          <p class="step-desc">Ich komme, montiere alles sauber – und Sie genießen Ihr neues Zuhause.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="galerie">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Galerie</span>
+        <h2>Ein Blick auf meine Arbeit 📸</h2>
+        <p class="section-sub">Einblicke aus echten Projekten – von der Küche bis zum Kleiderschrank.</p>
+      </div>
+
+      <!-- Filter buttons -->
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" onclick="filterGallery('all', this)">Alle</button>
+        <button class="filter-btn" onclick="filterGallery('küche', this)">🍳 Küche</button>
+        <button class="filter-btn" onclick="filterGallery('möbel', this)">🛋️ Möbel</button>
+        <button class="filter-btn" onclick="filterGallery('bad', this)">🚿 Bad</button>
+        <button class="filter-btn" onclick="filterGallery('büro', this)">🖥️ Büro</button>
+        <button class="filter-btn" onclick="filterGallery('extras', this)">🔩 Extras</button>
+      </div>
+
+      <!-- Masonry grid -->
+      <div class="masonry" id="masonryGrid">
+
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(0)">
+          <img src="fotos/20220714_093525.jpg" alt="Montageservice" onerror="this.parentElement.innerHTML=placeholderHTML('20220714_093525.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="küche" onclick="openLightbox(1)">
+          <img src="fotos/20230504_111251.jpg" alt="Montageservice" onerror="this.parentElement.innerHTML=placeholderHTML('20230504_111251.jpg','🍳 Küche')"/>
+          <div class="photo-overlay"><span class="photo-label">🍳 Küche</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(2)">
+          <img src="fotos/20230622_151511.jpg" alt="Montageservice" onerror="this.parentElement.innerHTML=placeholderHTML('20230622_151511.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="küche" onclick="openLightbox(3)">
+          <img src="fotos/20230627_133147.jpg" alt="Montageservice" onerror="this.parentElement.innerHTML=placeholderHTML('20230627_133147.jpg','🍳 Küche')"/>
+          <div class="photo-overlay"><span class="photo-label">🍳 Küche</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(4)">
+          <img src="fotos/20240412_205529.jpg" alt="Montageservice" onerror="this.parentElement.innerHTML=placeholderHTML('20240412_205529.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(5)">
+          <img src="fotos/20240425_113456.jpg" alt="Montageservice" onerror="this.parentElement.innerHTML=placeholderHTML('20240425_113456.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="küche" onclick="openLightbox(6)">
+          <img src="fotos/20241011_203310.jpg" alt="Montageservice" onerror="this.parentElement.innerHTML=placeholderHTML('20241011_203310.jpg','🍳 Küche')"/>
+          <div class="photo-overlay"><span class="photo-label">🍳 Küche</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(7)">
+          <img src="fotos/20250313_180225.jpg" alt="Montageservice" onerror="this.parentElement.innerHTML=placeholderHTML('20250313_180225.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(8)">
+          <img src="fotos/20250813_194820.jpg" alt="Montageservice" onerror="this.parentElement.innerHTML=placeholderHTML('20250813_194820.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(9)">
+          <img src="fotos/20260116_181219.jpg" alt="Montageservice" onerror="this.parentElement.innerHTML=placeholderHTML('20260116_181219.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+
+      </div><!-- /masonry -->
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+    <button class="lb-close" onclick="closeLightbox()">✕</button>
+    <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
+    <img class="lightbox-img" id="lbImg" src="" alt=""/>
+    <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
+    <div class="lb-label" id="lbLabel"></div>
+    <div class="lb-counter" id="lbCounter"></div>
+  </div>
+
+  <!-- CTA -->
+  <section>
+    <div class="section-inner">
+      <div class="cta-banner reveal">
+        <h3>Bereit? Dann los! 🚀</h3>
+        <p>Einfach anfragen – ich melde mich noch heute mit einem fairen Angebot.</p>
+        <div class="cta-banner-btns">
+          <a href="kontakt.html" class="btn-primary">📋 Jetzt anfragen</a>
+          <a href="preise.html" class="btn-secondary">Preise ansehen →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Montageservice <span>Könitz</span></div>
+    <div class="footer-sub">Ihr Montageprofi aus Castrop-Rauxel · Ganz NRW</div>
+    <div class="footer-links">
+      <a href="index.html">Start</a><a href="leistungen.html">Leistungen</a>
+      <a href="preise.html">Preise</a><a href="ueber.html">Über mich</a><a href="kontakt.html">Kontakt</a>
+    </div>
+    <div class="footer-links" style="margin-top: 0.5rem;">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutzerklärung</a>
+    </div>
+    <div class="footer-copy">© 2025 Montageservice Könitz · Castrop-Rauxel, NRW</div>
+  </div>
+</footer>
+
+<a href="kontakt.html" class="fab">📋</a>
+<script src="main.js"></script>
+<script>
+// ─── PLACEHOLDER for missing photos ───
+function placeholderHTML(name, label) {
+  return `<div class="photo-placeholder" style="aspect-ratio:4/3">
+    <div class="ph-icon">${label.split(' ')[0]}</div>
+    <div style="font-size:0.72rem;color:rgba(122,122,122,0.8)">Foto hier einfügen:</div>
+    <div class="ph-name">${name}</div>
+  </div>`;
+}
+
+// ─── FILTER ───
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.masonry-item').forEach(item => {
+    if (cat === 'all' || item.dataset.cat === cat) {
+      item.classList.remove('hidden');
+    } else {
+      item.classList.add('hidden');
+    }
+  });
+  // rebuild visible index for lightbox
+  buildVisibleIndex();
+}
+
+// ─── LIGHTBOX ───
+let visibleItems = [];
+let currentLbIdx = 0;
+
+function buildVisibleIndex() {
+  visibleItems = Array.from(document.querySelectorAll('.masonry-item:not(.hidden)'));
+}
+buildVisibleIndex();
+
+function openLightbox(globalIdx) {
+  // find which visible item was clicked by matching the item
+  const allItems = Array.from(document.querySelectorAll('.masonry-item'));
+  const clickedItem = allItems[globalIdx];
+  const visIdx = visibleItems.indexOf(clickedItem);
+  if (visIdx === -1) return;
+  currentLbIdx = visIdx;
+  showLbItem();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showLbItem() {
+  const item = visibleItems[currentLbIdx];
+  if (!item) return;
+  const img = item.querySelector('img');
+  const label = item.querySelector('.photo-label');
+  document.getElementById('lbImg').src = img ? img.src : '';
+  document.getElementById('lbLabel').textContent = label ? label.textContent : '';
+  document.getElementById('lbCounter').textContent = (currentLbIdx + 1) + ' / ' + visibleItems.length;
+}
+
+function lbNav(dir) {
+  currentLbIdx = (currentLbIdx + dir + visibleItems.length) % visibleItems.length;
+  showLbItem();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeLightboxOutside(e) {
+  if (e.target.id === 'lightbox') closeLightbox();
+}
+
+// keyboard nav
+document.addEventListener('keydown', e => {
+  const lb = document.getElementById('lightbox');
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'ArrowRight') lbNav(1);
+  if (e.key === 'ArrowLeft') lbNav(-1);
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+</body>
+</html>

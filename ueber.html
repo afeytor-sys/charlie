@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Über mich – Montageservice Könitz NRW</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* profile layout */
+    .profile-layout {
+      display: grid; grid-template-columns: 380px 1fr; gap: 5rem; align-items: start;
+    }
+    .profile-left { position: sticky; top: 100px; }
+    .avatar-box {
+      background: var(--card); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px; aspect-ratio: 3/4; max-width: 340px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; margin-bottom: 1.5rem;
+    }
+    .avatar-box::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 55%;
+      background: linear-gradient(to top, rgba(244,161,24,0.12), transparent);
+    }
+    .avatar-emoji { font-size: 9rem; animation: float 3.5s ease-in-out infinite; }
+    .profile-name { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; margin-bottom: 0.2rem; }
+    .profile-role { font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-bottom: 1rem; }
+    .profile-loc { font-size: 0.82rem; color: var(--gray); margin-bottom: 1.5rem; }
+    .profile-traits { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .trait {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 50px; padding: 0.3rem 0.9rem;
+      font-size: 0.78rem; color: rgba(245,242,238,0.65);
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+
+    /* right content */
+    .profile-right {}
+    .bio-block { margin-bottom: 3rem; }
+    .bio-block p { font-size: 1rem; color: rgba(245,242,238,0.65); line-height: 1.8; margin-bottom: 1rem; font-weight: 300; }
+    .bio-block p strong { color: var(--white); font-weight: 600; }
+    blockquote {
+      border-left: 3px solid var(--accent); padding: 1rem 1.5rem;
+      background: rgba(244,161,24,0.05); border-radius: 0 12px 12px 0;
+      font-style: italic; color: rgba(245,242,238,0.6); font-size: 1rem;
+      line-height: 1.7; margin: 2rem 0;
+    }
+
+    /* values */
+    .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 3rem; }
+    .value-card {
+      background: var(--card); border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 16px; padding: 1.5rem;
+      transition: all 0.3s;
+    }
+    .value-card:hover { border-color: rgba(244,161,24,0.2); transform: translateY(-3px); }
+    .value-icon { font-size: 1.6rem; margin-bottom: 0.7rem; display: block; }
+    .value-title { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .value-desc { font-size: 0.82rem; color: rgba(245,242,238,0.5); line-height: 1.6; }
+
+    /* NRW coverage */
+    .nrw-box {
+      background: var(--card); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px; padding: 2rem;
+    }
+    .nrw-box h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 1rem; }
+    .nrw-cities { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .nrw-city {
+      background: rgba(255,255,255,0.04); border-radius: 50px;
+      padding: 0.25rem 0.8rem; font-size: 0.78rem; color: rgba(245,242,238,0.55);
+    }
+    .nrw-city.home { background: rgba(244,161,24,0.1); color: var(--accent); border: 1px solid rgba(244,161,24,0.2); }
+
+    @media(max-width:900px){
+      .profile-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .profile-left { position: static; }
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Montageservice <span>Könitz</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Start</a></li>
+    <li><a href="leistungen.html">Leistungen</a></li>
+    <li><a href="preise.html">Preise</a></li>
+    <li><a href="ueber.html">Über mich</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+  </ul>
+  <a href="kontakt.html" class="nav-cta">Jetzt anfragen</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page">
+
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-inner">
+      <span class="section-tag">Über mich</span>
+      <h1>Hallo, ich bin<br>Thomas! 👋</h1>
+      <p>Montageprofi aus Castrop-Rauxel, Handwerker aus Leidenschaft – und ein Typ, der auch beim 50. Schrank noch gut drauf ist.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-inner">
+      <div class="profile-layout">
+
+        <div class="profile-left reveal">
+          <div class="avatar-box">
+            <img src="fotos/Profilbild.jpg" alt="Thomas Könitz" style="width:100%; height:100%; object-fit:cover; border-radius:24px;"/>
+          </div>
+          <div class="profile-name">Thomas Könitz</div>
+          <div class="profile-role">Montageprofi & Handwerker</div>
+          <div class="profile-loc">📍 Castrop-Rauxel, NRW</div>
+          <div class="profile-traits">
+            <span class="trait">😄 Immer gut drauf</span>
+            <span class="trait">🔧 Erfahrener Handwerker</span>
+            <span class="trait">🚗 Mobil in NRW</span>
+            <span class="trait">⏰ Pünktlich</span>
+            <span class="trait">💬 Ehrliche Preise</span>
+            <span class="trait">🎯 Präzise Arbeit</span>
+          </div>
+        </div>
+
+        <div class="profile-right">
+          <div class="bio-block reveal">
+            <span class="section-tag">Meine Geschichte</span>
+            <h2>Der Typ mit dem Schraubenzieher 🔩</h2>
+            <p>Ich heiße <strong>Thomas</strong>, die meisten nennen mich <strong style="color:var(--accent)">Charlie</strong>. Aber das ist eine andere Geschichte. Ich bin Ihr Montageprofi aus <strong>Castrop-Rauxel</strong>. Seit Jahren bin ich in ganz <strong>Nordrhein-Westfalen</strong> unterwegs, um Möbel aufzubauen, Küchen zu montieren und alles an die Wand zu bringen, was an die Wand gehört.</p>
+            <p>Handwerk ist für mich keine Pflicht – es macht mir <strong>wirklich Spaß</strong>. Wenn am Ende alles steht, die Küche passt und der Kunde strahlt, dann ist das für mich der beste Teil des Tages. Kein Auftrag ist zu klein, kein Schrank zu groß.</p>
+
+            <blockquote>
+              „Ich komme, ich schraube, ich lache – und am Ende steht Ihr Schrank genauso, wie er stehen soll. Das ist mein Versprechen."
+              <br/><br/>— Thomas Könitz
+            </blockquote>
+
+            <p>Was mich von anderen unterscheidet? Ich nehme meinen Job ernst – aber mich selbst nicht zu ernst. <strong>Freundlichkeit, Pünktlichkeit und ehrliche Preise</strong> sind für mich keine Extras, sondern Selbstverständlichkeiten.</p>
+          </div>
+
+          <div class="reveal">
+            <span class="section-tag">Meine Werte</span>
+            <h2 style="margin-bottom:2rem">Was mir wichtig ist</h2>
+            <div class="values-grid">
+              <div class="value-card"><span class="value-icon">⏰</span><div class="value-title">Pünktlichkeit</div><p class="value-desc">Ich sage, wann ich komme – und ich komme. Ihre Zeit ist genauso wertvoll wie meine.</p></div>
+              <div class="value-card"><span class="value-icon">🛡️</span><div class="value-title">Sorgfalt</div><p class="value-desc">Kein Teil bleibt übrig. Ich arbeite präzise und achte auf jedes Detail, auch hinter dem Schrank.</p></div>
+              <div class="value-card"><span class="value-icon">💬</span><div class="value-title">Ehrlichkeit</div><p class="value-desc">Was ich anbiete, das halte ich auch. Transparente Preise, keine versteckten Kosten.</p></div>
+              <div class="value-card"><span class="value-icon">😄</span><div class="value-title">Gute Stimmung</div><p class="value-desc">Handwerk muss nicht langweilig sein. Mit mir ist der Montagetag ein entspannter Tag.</p></div>
+            </div>
+          </div>
+
+          <div class="nrw-box reveal">
+            <h3>🗺️ Mein Einsatzgebiet – Ganz NRW</h3>
+            <div class="nrw-cities">
+              <span class="nrw-city home">📍 Castrop-Rauxel</span>
+              <span class="nrw-city">Dortmund</span>
+              <span class="nrw-city">Bochum</span>
+              <span class="nrw-city">Essen</span>
+              <span class="nrw-city">Duisburg</span>
+              <span class="nrw-city">Düsseldorf</span>
+              <span class="nrw-city">Köln</span>
+              <span class="nrw-city">Münster</span>
+              <span class="nrw-city">Gelsenkirchen</span>
+              <span class="nrw-city">Herne</span>
+              <span class="nrw-city">Recklinghausen</span>
+              <span class="nrw-city">Oberhausen</span>
+              <span class="nrw-city">Wuppertal</span>
+              <span class="nrw-city">Bielefeld</span>
+              <span class="nrw-city">Paderborn</span>
+              <span class="nrw-city">Siegen</span>
+              <span class="nrw-city">Aachen</span>
+              <span class="nrw-city">& überall dazwischen</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Montageservice <span>Könitz</span></div>
+    <div class="footer-sub">Ihr Montageprofi aus Castrop-Rauxel · Ganz NRW</div>
+    <div class="footer-links">
+      <a href="index.html">Start</a><a href="leistungen.html">Leistungen</a>
+      <a href="preise.html">Preise</a><a href="ueber.html">Über mich</a><a href="kontakt.html">Kontakt</a>
+    </div>
+    <div class="footer-links" style="margin-top: 0.5rem;">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutzerklärung</a>
+    </div>
+    <div class="footer-copy">© 2025 Montageservice Könitz · Castrop-Rauxel, NRW</div>
+  </div>
+</footer>
+
+<a href="kontakt.html" class="fab">📋</a>
+<script src="main.js"></script>
+</body>
+</html>
