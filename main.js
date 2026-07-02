@@ -38,7 +38,7 @@ function sendForm() {
     const el = document.getElementById(id);
     if (el && !el.value.trim()) {
       el.focus();
-      el.style.borderColor = '#e05c00';
+      el.style.borderColor = '#ca5a00';
       setTimeout(() => el.style.borderColor = '', 2000);
       return;
     }

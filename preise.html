@@ -39,7 +39,7 @@
     }
     .preis-card.featured {
       border-color: var(--accent);
-      background: linear-gradient(160deg, rgba(244,161,24,0.08) 0%, var(--card) 60%);
+      background: linear-gradient(160deg, rgba(253,113,0,0.08) 0%, var(--card) 60%);
     }
     .preis-card.featured::before {
       content: '⭐ Beliebt';
@@ -49,7 +49,7 @@
       padding: 0.3rem 1rem; border-radius: 0 0 10px 10px; letter-spacing: 0.04em;
     }
     .preis-card:hover { transform: translateY(-5px); box-shadow: 0 24px 55px rgba(0,0,0,0.45); }
-    .preis-card.featured:hover { box-shadow: 0 24px 55px rgba(244,161,24,0.2); }
+    .preis-card.featured:hover { box-shadow: 0 24px 55px rgba(253,113,0,0.2); }
     .preis-icon { font-size: 2.8rem; margin-bottom: 1rem; display: block; }
     .preis-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: rgba(245,242,238,0.75); margin-bottom: 0.5rem; }
     .preis-range {
@@ -67,8 +67,8 @@
     .preis-list li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
     .preis-btn {
       display: block; margin-top: 1.8rem;
-      background: rgba(244,161,24,0.1); color: var(--accent);
-      border: 1px solid rgba(244,161,24,0.25); border-radius: 50px;
+      background: rgba(253,113,0,0.1); color: var(--accent);
+      border: 1px solid rgba(253,113,0,0.25); border-radius: 50px;
       padding: 0.6rem 1.5rem; text-decoration: none;
       font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem;
       transition: all 0.2s; text-align: center;
@@ -79,7 +79,7 @@
 
     /* disclaimer box */
     .disclaimer {
-      background: rgba(244,161,24,0.07); border: 1px solid rgba(244,161,24,0.18);
+      background: rgba(253,113,0,0.07); border: 1px solid rgba(253,113,0,0.18);
       border-radius: 18px; padding: 2rem 2.5rem;
       display: flex; gap: 1.5rem; align-items: flex-start;
       margin-bottom: 3rem;
@@ -244,10 +244,6 @@
         <div class="faq-item">
           <div class="faq-q" onclick="toggleFaq(this)">Wie schnell kann ein Termin stattfinden? <span class="faq-arrow">▼</span></div>
           <div class="faq-a">Das hängt von der aktuellen Auslastung ab – in der Regel finden wir innerhalb weniger Tage einen passenden Termin. Einfach anfragen!</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Welche Zahlungsmethoden werden akzeptiert? <span class="faq-arrow">▼</span></div>
-          <div class="faq-a">Bar, Überweisung oder per PayPal – wir finden gemeinsam eine passende Lösung. Details klären wir gerne beim Angebot.</div>
         </div>
       </div>
     </div>

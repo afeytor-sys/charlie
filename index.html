@@ -86,8 +86,8 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 65% 55% at 85% 40%, rgba(244,161,24,0.11) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 50% at 10% 75%, rgba(224,92,0,0.07) 0%, transparent 60%);
+        radial-gradient(ellipse 65% 55% at 85% 40%, rgba(253,113,0,0.11) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 10% 75%, rgba(202,90,0,0.07) 0%, transparent 60%);
     }
     .hero-grid {
       position: absolute; inset: 0;
@@ -100,7 +100,7 @@
     .hero-left {}
     .hero-tag {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(244,161,24,0.1); border: 1px solid rgba(244,161,24,0.28);
+      background: rgba(253,113,0,0.1); border: 1px solid rgba(253,113,0,0.28);
       border-radius: 50px; padding: 0.35rem 0.9rem;
       font-size: 0.74rem; font-weight: 600; color: var(--accent);
       letter-spacing: 0.08em; text-transform: uppercase;
@@ -117,6 +117,7 @@
       animation: fadeUp 0.5s 0.1s ease both;
     }
     h1 .hl { color: var(--accent); }
+    h1 .h1-sub { font-size: 0.55em; }
     .hero-sub {
       font-size: 1.05rem;
       color: rgba(245,242,238,0.55);
@@ -143,7 +144,7 @@
       display: flex; align-items: center; gap: 1rem;
       transition: transform 0.25s, border-color 0.25s;
     }
-    .hcard:hover { transform: translateX(-5px); border-color: rgba(244,161,24,0.25); }
+    .hcard:hover { transform: translateX(-5px); border-color: rgba(253,113,0,0.25); }
     .hcard-icon { font-size: 1.8rem; flex-shrink: 0; }
     .hcard-big { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; }
     .hcard-small { font-size: 0.78rem; color: var(--gray); margin-top: 2px; }
@@ -156,7 +157,7 @@
       border-radius: 18px; padding: 2rem;
       transition: all 0.3s;
     }
-    .why-card:hover { transform: translateY(-4px); border-color: rgba(244,161,24,0.22); }
+    .why-card:hover { transform: translateY(-4px); border-color: rgba(253,113,0,0.22); }
     .why-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
     .why-title { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
     .why-desc { font-size: 0.87rem; color: rgba(245,242,238,0.5); line-height: 1.65; }
@@ -171,7 +172,7 @@
       text-decoration: none; color: var(--white);
       transition: all 0.25s;
     }
-    .svc-mini:hover { border-color: rgba(244,161,24,0.3); transform: translateY(-3px); }
+    .svc-mini:hover { border-color: rgba(253,113,0,0.3); transform: translateY(-3px); }
     .svc-mini-icon { font-size: 1.6rem; }
     .svc-mini-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; }
     .svc-mini-tag { font-size: 0.72rem; color: var(--gray); margin-top: 1px; }
@@ -210,12 +211,12 @@
     .video-wrapper video { width: 100%; display: block; border-radius: 22px; }
     .video-wrapper::before {
       content: ''; position: absolute; inset: 0; border-radius: 22px;
-      background: linear-gradient(135deg, rgba(244,161,24,0.08) 0%, transparent 50%);
+      background: linear-gradient(135deg, rgba(253,113,0,0.08) 0%, transparent 50%);
       pointer-events: none; z-index: 1;
     }
     .video-text p { font-size: 0.97rem; color: rgba(245,242,238,0.55); line-height: 1.75; font-weight: 300; margin-bottom: 1.8rem; }
     .video-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-    .chip { background: rgba(244,161,24,0.08); border: 1px solid rgba(244,161,24,0.18); border-radius: 50px; padding: 0.35rem 0.9rem; font-size: 0.78rem; color: var(--accent); font-weight: 600; }
+    .chip { background: rgba(253,113,0,0.08); border: 1px solid rgba(253,113,0,0.18); border-radius: 50px; padding: 0.35rem 0.9rem; font-size: 0.78rem; color: var(--accent); font-weight: 600; }
 
     /* ─── FOTOS ─── */
     #fotos-section { background: var(--card2); }
@@ -233,7 +234,7 @@
     .hlightbox img { max-width: 90vw; max-height: 88vh; border-radius: 18px; object-fit: contain; box-shadow: 0 30px 80px rgba(0,0,0,0.8); animation: lbIn 0.25s ease; }
     @keyframes lbIn { from{opacity:0;transform:scale(0.93)} to{opacity:1;transform:scale(1)} }
     .hlb-close { position: absolute; top: 1.5rem; right: 1.5rem; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.1); border: none; color: var(--white); font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-    .hlb-close:hover { background: rgba(244,161,24,0.4); }
+    .hlb-close:hover { background: rgba(253,113,0,0.4); }
     .hlb-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: var(--white); font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
     .hlb-nav:hover { background: var(--accent); color: var(--black); border-color: var(--accent); }
     .hlb-prev { left: 1.5rem; }
@@ -271,7 +272,7 @@
     <div class="hero-content">
       <div class="hero-left">
         <div class="hero-tag">📍 Castrop-Rauxel · Ganz NRW</div>
-        <h1>Der Eine<br>für deine <span class="hl">Montage</span><br>in NRW</h1>
+        <h1><span class="hl">Der Eine</span><br>für deine <span class="hl">Montage</span><br><span class="h1-sub">in NRW</span></h1>
         <p class="hero-sub">Möbel auf, Werkzeug raus, ich packe an. Zuverlässig, sorgfältig und mit einem Lächeln. Von Castrop-Rauxel aus in ganz Nordrhein-Westfalen unterwegs.</p>
         <div class="hero-actions">
           <a href="kontakt.html" class="btn-primary">📋 Kostenlos anfragen</a>
@@ -313,7 +314,7 @@
       <div class="reveal">
         <span class="section-tag">Warum Der Eine?</span>
         <h2>Handwerk mit Herz 🤝</h2>
-        <p class="section-sub">Ich bin nicht nur ein Monteur – ich bin der Typ, der noch lächelt, wenn der Schrank 300 Teile hat.</p>
+        <p class="section-sub">Weil ich mit Gewissen und Spaß dabei bin.</p>
       </div>
       <div class="why-grid reveal">
         <div class="why-card"><span class="why-icon">⏰</span><div class="why-title">Pünktlich & zuverlässig</div><p class="why-desc">Ich sage, wann ich komme – und ich komme. Keine langen Wartezeiten, kein „ich melde mich nochmal".</p></div>
@@ -382,19 +383,43 @@
       </div>
       <div class="fotos-grid reveal">
         <div class="foto-item big" onclick="openHLightbox(0)">
-          <img src="fotos/hf_20260222_202534_9ca16151-b838-4e2a-9e59-c90dde139d6c.png" alt="Montageservice Könitz – Möbelmontage Projekt in NRW"/>
+          <img src="fotos/charlie-werkbank-messen.jpg" alt="Thomas Könitz beim präzisen Ausmessen in der Werkstatt"/>
           <div class="foto-overlay"></div>
         </div>
         <div class="foto-item" onclick="openHLightbox(1)">
-          <img src="fotos/hf_20260223_084250_a1537a47-c52e-4b26-8870-83f79f5b75a6.png" alt="Thomas Könitz bei der Küchenmontage in Nordrhein-Westfalen"/>
+          <img src="fotos/charlie-werkstatt-treppe.jpg" alt="Montageservice Könitz – Arbeit an der Werkstatt-Treppenkonstruktion"/>
           <div class="foto-overlay"></div>
         </div>
         <div class="foto-item" onclick="openHLightbox(2)">
-          <img src="fotos/hf_20260223_135809_95f7054a-ea22-4424-99b8-3a8201ce5d5c.jpeg" alt="Professioneller Möbelaufbau durch Montageservice Könitz NRW"/>
+          <img src="fotos/charlie-lachend.jpg" alt="Thomas Könitz – gut gelaunt bei der Arbeit"/>
           <div class="foto-overlay"></div>
         </div>
         <div class="foto-item" onclick="openHLightbox(3)">
-          <img src="fotos/hf_20260222_191656_e339d7df-5487-408a-be30-630c65f3428b.png" alt="Fertig montierte Möbel – Montageservice Könitz Castrop-Rauxel"/>
+          <img src="fotos/charlie-bohren.jpg" alt="Montageservice Könitz – präzises Arbeiten mit der Bohrmaschine"/>
+          <div class="foto-overlay"></div>
+        </div>
+        <div class="foto-item" onclick="openHLightbox(4)">
+          <img src="fotos/charlie-anzeichnen.jpg" alt="Thomas Könitz beim Anzeichnen von Maßen am Werkstück"/>
+          <div class="foto-overlay"></div>
+        </div>
+        <div class="foto-item" onclick="openHLightbox(5)">
+          <img src="fotos/charlie-zollstock.jpg" alt="Präzises Ausmessen mit dem Zollstock in der Werkstatt"/>
+          <div class="foto-overlay"></div>
+        </div>
+        <div class="foto-item" onclick="openHLightbox(6)">
+          <img src="fotos/charlie-kappsaege.jpg" alt="Arbeit an der Kappsäge – präzise Zuschnitte in der Werkstatt"/>
+          <div class="foto-overlay"></div>
+        </div>
+        <div class="foto-item" onclick="openHLightbox(7)">
+          <img src="fotos/charlie-lachend-2.jpg" alt="Thomas Könitz – entspannt und gut gelaunt bei der Arbeit"/>
+          <div class="foto-overlay"></div>
+        </div>
+        <div class="foto-item" onclick="openHLightbox(8)">
+          <img src="fotos/charlie-pfeifen.jpg" alt="Thomas Könitz konzentriert in der Werkstatt"/>
+          <div class="foto-overlay"></div>
+        </div>
+        <div class="foto-item" onclick="openHLightbox(9)">
+          <img src="fotos/charlie-profil.jpg" alt="Thomas Könitz – Montageprofi aus Castrop-Rauxel"/>
           <div class="foto-overlay"></div>
         </div>
       </div>
@@ -466,10 +491,16 @@
 <script src="main.js"></script>
 <script>
 const hPhotos = [
-  'fotos/hf_20260222_202534_9ca16151-b838-4e2a-9e59-c90dde139d6c.png',
-  'fotos/hf_20260223_084250_a1537a47-c52e-4b26-8870-83f79f5b75a6.png',
-  'fotos/hf_20260223_135809_95f7054a-ea22-4424-99b8-3a8201ce5d5c.jpeg',
-  'fotos/hf_20260222_191656_e339d7df-5487-408a-be30-630c65f3428b.png',
+  'fotos/charlie-werkbank-messen.jpg',
+  'fotos/charlie-werkstatt-treppe.jpg',
+  'fotos/charlie-lachend.jpg',
+  'fotos/charlie-bohren.jpg',
+  'fotos/charlie-anzeichnen.jpg',
+  'fotos/charlie-zollstock.jpg',
+  'fotos/charlie-kappsaege.jpg',
+  'fotos/charlie-lachend-2.jpg',
+  'fotos/charlie-pfeifen.jpg',
+  'fotos/charlie-profil.jpg',
 ];
 let hlbIdx = 0;
 

@@ -36,10 +36,10 @@
     }
     .svc-card::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(244,161,24,0.06) 0%, transparent 55%);
+      background: linear-gradient(135deg, rgba(253,113,0,0.06) 0%, transparent 55%);
       opacity: 0; transition: opacity 0.3s;
     }
-    .svc-card:hover { border-color: rgba(244,161,24,0.28); transform: translateY(-5px); box-shadow: 0 24px 55px rgba(0,0,0,0.45); }
+    .svc-card:hover { border-color: rgba(253,113,0,0.28); transform: translateY(-5px); box-shadow: 0 24px 55px rgba(0,0,0,0.45); }
     .svc-card:hover::after { opacity: 1; }
     .svc-icon { font-size: 2.5rem; margin-bottom: 1.3rem; display: block; }
     .svc-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; margin-bottom: 0.7rem; }
@@ -53,7 +53,7 @@
     .svc-list li::before { content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
     .svc-badge {
       display: inline-block; margin-top: 1.2rem;
-      background: rgba(244,161,24,0.1); color: var(--accent);
+      background: rgba(253,113,0,0.1); color: var(--accent);
       border-radius: 50px; padding: 0.25rem 0.8rem;
       font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
     }
@@ -64,7 +64,7 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;
     }
     .svc-card.featured .svc-visual {
-      background: rgba(244,161,24,0.07); border: 1px solid rgba(244,161,24,0.15);
+      background: rgba(253,113,0,0.07); border: 1px solid rgba(253,113,0,0.15);
       border-radius: 16px; height: 200px;
       display: flex; align-items: center; justify-content: center; font-size: 5rem;
     }
@@ -75,7 +75,7 @@
     .process-steps::before {
       content: ''; position: absolute;
       top: 28px; left: 10%; right: 10%; height: 2px;
-      background: linear-gradient(90deg, var(--accent), rgba(244,161,24,0.2));
+      background: linear-gradient(90deg, var(--accent), rgba(253,113,0,0.2));
       z-index: 0;
     }
     .step { text-align: center; position: relative; z-index: 1; }
@@ -91,8 +91,8 @@
 
     /* CTA banner */
     .cta-banner {
-      background: linear-gradient(135deg, rgba(244,161,24,0.12) 0%, rgba(224,92,0,0.06) 100%);
-      border: 1px solid rgba(244,161,24,0.2);
+      background: linear-gradient(135deg, rgba(253,113,0,0.12) 0%, rgba(202,90,0,0.06) 100%);
+      border: 1px solid rgba(253,113,0,0.2);
       border-radius: 24px; padding: 3rem; text-align: center;
     }
     .cta-banner h3 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 0.7rem; }
@@ -109,23 +109,6 @@
 
     /* ─── GALERIE ─── */
     #galerie { background: var(--card2); }
-
-    .filter-bar {
-      display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2.5rem;
-    }
-    .filter-btn {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 50px;
-      padding: 0.45rem 1.1rem;
-      font-family: 'Syne', sans-serif;
-      font-weight: 600; font-size: 0.78rem;
-      color: rgba(245,242,238,0.55);
-      cursor: pointer; transition: all 0.2s;
-      letter-spacing: 0.03em;
-    }
-    .filter-btn:hover { border-color: rgba(244,161,24,0.3); color: var(--accent); }
-    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: var(--black); }
 
     /* masonry via columns */
     .masonry {
@@ -161,7 +144,7 @@
     .photo-label {
       font-family: 'Syne', sans-serif; font-weight: 700;
       font-size: 0.78rem; color: var(--white);
-      background: rgba(244,161,24,0.9);
+      background: rgba(253,113,0,0.9);
       border-radius: 50px; padding: 0.2rem 0.7rem;
     }
 
@@ -205,7 +188,7 @@
       display: flex; align-items: center; justify-content: center;
       transition: background 0.2s;
     }
-    .lb-close:hover { background: rgba(244,161,24,0.3); }
+    .lb-close:hover { background: rgba(253,113,0,0.3); }
     .lb-nav {
       position: absolute; top: 50%; transform: translateY(-50%);
       width: 48px; height: 48px; border-radius: 50%;
@@ -225,7 +208,7 @@
     }
     .lb-label {
       position: absolute; bottom: 4rem; left: 50%; transform: translateX(-50%);
-      background: rgba(244,161,24,0.9); color: var(--black);
+      background: rgba(253,113,0,0.9); color: var(--black);
       font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.78rem;
       padding: 0.3rem 1rem; border-radius: 50px; white-space: nowrap;
     }
@@ -401,16 +384,6 @@
         <p class="section-sub">Einblicke aus echten Projekten – von der Küche bis zum Kleiderschrank.</p>
       </div>
 
-      <!-- Filter buttons -->
-      <div class="filter-bar reveal">
-        <button class="filter-btn active" onclick="filterGallery('all', this)">Alle</button>
-        <button class="filter-btn" onclick="filterGallery('küche', this)">🍳 Küche</button>
-        <button class="filter-btn" onclick="filterGallery('möbel', this)">🛋️ Möbel</button>
-        <button class="filter-btn" onclick="filterGallery('bad', this)">🚿 Bad</button>
-        <button class="filter-btn" onclick="filterGallery('büro', this)">🖥️ Büro</button>
-        <button class="filter-btn" onclick="filterGallery('extras', this)">🔩 Extras</button>
-      </div>
-
       <!-- Masonry grid -->
       <div class="masonry" id="masonryGrid">
 
@@ -453,6 +426,158 @@
         <div class="masonry-item" data-cat="möbel" onclick="openLightbox(9)">
           <img src="fotos/20260116_181219.jpg" alt="Möbelmontage Projekt – Regale und Schränke aufgebaut in NRW" onerror="this.parentElement.innerHTML=placeholderHTML('20260116_181219.jpg','🛋️ Möbel')"/>
           <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(10)">
+          <img src="fotos/20201029_101441.jpg" alt="Bodenverlegung – neuer Boden verlegt im Dachgeschoss NRW" onerror="this.parentElement.innerHTML=placeholderHTML('20201029_101441.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(11)">
+          <img src="fotos/20230301_130855.jpg" alt="Hochbett nach Maß – individuelles Kinderzimmermöbel montiert" onerror="this.parentElement.innerHTML=placeholderHTML('20230301_130855.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(12)">
+          <img src="fotos/20230301_140230.jpg" alt="Maßgefertigtes Hochbett mit Leiter – Möbelbau für Kinderzimmer" onerror="this.parentElement.innerHTML=placeholderHTML('20230301_140230.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(13)">
+          <img src="fotos/20230418_153611.jpg" alt="Raumteiler mit Glaselementen – individueller Trennwandbau" onerror="this.parentElement.innerHTML=placeholderHTML('20230418_153611.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(14)">
+          <img src="fotos/20230623_130103.jpg" alt="Einbauschrank mit verstellbaren Böden – maßgefertigt montiert" onerror="this.parentElement.innerHTML=placeholderHTML('20230623_130103.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(15)">
+          <img src="fotos/20230831_200924.jpg" alt="Treppenstufen aus Massivholz – individueller Treppenbau" onerror="this.parentElement.innerHTML=placeholderHTML('20230831_200924.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(16)">
+          <img src="fotos/20240321_194749.jpg" alt="Entkernung vor Neugestaltung – Rückbauarbeiten in NRW" onerror="this.parentElement.innerHTML=placeholderHTML('20240321_194749.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(17)">
+          <img src="fotos/20240426_185316.jpg" alt="Rückbauarbeiten – Raum bis auf die Wände entkernt" onerror="this.parentElement.innerHTML=placeholderHTML('20240426_185316.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(18)">
+          <img src="fotos/20241012_023722.jpg" alt="Einbauschrank mit LED-Beleuchtung – maßgefertigte Montage" onerror="this.parentElement.innerHTML=placeholderHTML('20241012_023722.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(19)">
+          <img src="fotos/20250327_171133.jpg" alt="Einbauschrank mit Falttüren – passgenau montiert" onerror="this.parentElement.innerHTML=placeholderHTML('20250327_171133.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(20)">
+          <img src="fotos/20250327_171147.jpg" alt="Begehbarer Schrank mit verstellbaren Fächern" onerror="this.parentElement.innerHTML=placeholderHTML('20250327_171147.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(21)">
+          <img src="fotos/20250403_140822.jpg" alt="Einbauschrank mit fünf Türen – millimetergenau eingepasst" onerror="this.parentElement.innerHTML=placeholderHTML('20250403_140822.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(22)">
+          <img src="fotos/20250403_140849.jpg" alt="Einbauschrank mit Fächern für Wäschekörbe" onerror="this.parentElement.innerHTML=placeholderHTML('20250403_140849.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(23)">
+          <img src="fotos/20250604_095141.jpg" alt="Messebau – Ladenregal und Kühltheke aufgebaut" onerror="this.parentElement.innerHTML=placeholderHTML('20250604_095141.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(24)">
+          <img src="fotos/20250908_102102.jpg" alt="Terrassenarbeiten – Markise und Fliesenbereich" onerror="this.parentElement.innerHTML=placeholderHTML('20250908_102102.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(25)">
+          <img src="fotos/20250911_170124.jpg" alt="Terrasse und Garten – Umbauarbeiten" onerror="this.parentElement.innerHTML=placeholderHTML('20250911_170124.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(26)">
+          <img src="fotos/20250919_125313.jpg" alt="Wandverkleidung mit Holzlamellen – individuell montiert" onerror="this.parentElement.innerHTML=placeholderHTML('20250919_125313.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="bad" onclick="openLightbox(27)">
+          <img src="fotos/20260116_181052.jpg" alt="Badezimmer-Spiegelschrank – passgenau eingebaut" onerror="this.parentElement.innerHTML=placeholderHTML('20260116_181052.jpg','🚿 Bad')"/>
+          <div class="photo-overlay"><span class="photo-label">🚿 Bad</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(28)">
+          <img src="fotos/20260205_094544.jpg" alt="Hauswirtschaftsraum – Waschmaschine und Schränke montiert" onerror="this.parentElement.innerHTML=placeholderHTML('20260205_094544.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="küche" onclick="openLightbox(29)">
+          <img src="fotos/20260205_141555.jpg" alt="Küchenmontage – Arbeitsplatte, Spüle und Elektrogeräte" onerror="this.parentElement.innerHTML=placeholderHTML('20260205_141555.jpg','🍳 Küche')"/>
+          <div class="photo-overlay"><span class="photo-label">🍳 Küche</span></div>
+        </div>
+        <div class="masonry-item" data-cat="bad" onclick="openLightbox(30)">
+          <img src="fotos/20260318_111609.jpg" alt="Badmontage – WC und Waschtisch installiert" onerror="this.parentElement.innerHTML=placeholderHTML('20260318_111609.jpg','🚿 Bad')"/>
+          <div class="photo-overlay"><span class="photo-label">🚿 Bad</span></div>
+        </div>
+        <div class="masonry-item" data-cat="bad" onclick="openLightbox(31)">
+          <img src="fotos/20260318_124938.jpg" alt="Badezimmer mit Holzverkleidung – Waschtisch montiert" onerror="this.parentElement.innerHTML=placeholderHTML('20260318_124938.jpg','🚿 Bad')"/>
+          <div class="photo-overlay"><span class="photo-label">🚿 Bad</span></div>
+        </div>
+        <div class="masonry-item" data-cat="bad" onclick="openLightbox(32)">
+          <img src="fotos/20260318_130746.jpg" alt="Badezimmer-Einbauschrank – offene Fächer eingebaut" onerror="this.parentElement.innerHTML=placeholderHTML('20260318_130746.jpg','🚿 Bad')"/>
+          <div class="photo-overlay"><span class="photo-label">🚿 Bad</span></div>
+        </div>
+        <div class="masonry-item" data-cat="bad" onclick="openLightbox(33)">
+          <img src="fotos/20260318_145330.jpg" alt="Glasbausteinfenster im Bad – fachgerecht eingebaut" onerror="this.parentElement.innerHTML=placeholderHTML('20260318_145330.jpg','🚿 Bad')"/>
+          <div class="photo-overlay"><span class="photo-label">🚿 Bad</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(34)">
+          <img src="fotos/20260318_164138.jpg" alt="Einbauregal vor Akustikpaneel-Wand – individuell montiert" onerror="this.parentElement.innerHTML=placeholderHTML('20260318_164138.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(35)">
+          <img src="fotos/20260318_164200.jpg" alt="Einbauschrank vor Akustikwand – passgenau montiert" onerror="this.parentElement.innerHTML=placeholderHTML('20260318_164200.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(36)">
+          <img src="fotos/20260407_114236.jpg" alt="Massivholztreppe – individueller Treppenbau in NRW" onerror="this.parentElement.innerHTML=placeholderHTML('20260407_114236.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(37)">
+          <img src="fotos/20260528_164554.jpg" alt="Design-Waschtisch aus Wurzelholz – individuelle Montage" onerror="this.parentElement.innerHTML=placeholderHTML('20260528_164554.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(38)">
+          <img src="fotos/20260604_205150.jpg" alt="Messebau – Regalwand für Messestand aufgebaut" onerror="this.parentElement.innerHTML=placeholderHTML('20260604_205150.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="bad" onclick="openLightbox(39)">
+          <img src="fotos/IMG-20250304-WA0005.jpg" alt="Waschtisch mit Unterschrank – Badmontage" onerror="this.parentElement.innerHTML=placeholderHTML('IMG-20250304-WA0005.jpg','🚿 Bad')"/>
+          <div class="photo-overlay"><span class="photo-label">🚿 Bad</span></div>
+        </div>
+        <div class="masonry-item" data-cat="küche" onclick="openLightbox(40)">
+          <img src="fotos/IMG-20250529-WA0003.jpg" alt="Küchenmontage in Arbeit – Unterschränke aufgestellt" onerror="this.parentElement.innerHTML=placeholderHTML('IMG-20250529-WA0003.jpg','🍳 Küche')"/>
+          <div class="photo-overlay"><span class="photo-label">🍳 Küche</span></div>
+        </div>
+        <div class="masonry-item" data-cat="küche" onclick="openLightbox(41)">
+          <img src="fotos/IMG-20250529-WA0015.jpg" alt="Fertige Einbauküche mit Dunstabzugshaube" onerror="this.parentElement.innerHTML=placeholderHTML('IMG-20250529-WA0015.jpg','🍳 Küche')"/>
+          <div class="photo-overlay"><span class="photo-label">🍳 Küche</span></div>
+        </div>
+        <div class="masonry-item" data-cat="möbel" onclick="openLightbox(42)">
+          <img src="fotos/IMG-20250925-WA0002.jpg" alt="Sideboard und Kleiderschrank vor Akustikwand montiert" onerror="this.parentElement.innerHTML=placeholderHTML('IMG-20250925-WA0002.jpg','🛋️ Möbel')"/>
+          <div class="photo-overlay"><span class="photo-label">🛋️ Möbel</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(43)">
+          <img src="fotos/IMG-20260407-WA0068.jpg" alt="Rückbauarbeiten mit Staubschutz – professionelle Entkernung" onerror="this.parentElement.innerHTML=placeholderHTML('IMG-20260407-WA0068.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(44)">
+          <img src="fotos/IMG-20260428-WA0003.jpg" alt="Messebau – fertiger Messestand mit Loungebereich" onerror="this.parentElement.innerHTML=placeholderHTML('IMG-20260428-WA0003.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(45)">
+          <img src="fotos/IMG-20260428-WA0005.jpg" alt="Messebau – Montage der Standkonstruktion" onerror="this.parentElement.innerHTML=placeholderHTML('IMG-20260428-WA0005.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(46)">
+          <img src="fotos/IMG-20260428-WA0006.jpg" alt="Messebau – Wandelement wird montiert" onerror="this.parentElement.innerHTML=placeholderHTML('IMG-20260428-WA0006.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
+        </div>
+        <div class="masonry-item" data-cat="extras" onclick="openLightbox(47)">
+          <img src="fotos/IMG-20260428-WA0009.jpg" alt="Messebau – Aufbau einer zweistöckigen Messestand-Konstruktion" onerror="this.parentElement.innerHTML=placeholderHTML('IMG-20260428-WA0009.jpg','🔩 Extras')"/>
+          <div class="photo-overlay"><span class="photo-label">🔩 Extras</span></div>
         </div>
 
       </div><!-- /masonry -->
@@ -513,27 +638,12 @@ function placeholderHTML(name, label) {
   </div>`;
 }
 
-// ─── FILTER ───
-function filterGallery(cat, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.masonry-item').forEach(item => {
-    if (cat === 'all' || item.dataset.cat === cat) {
-      item.classList.remove('hidden');
-    } else {
-      item.classList.add('hidden');
-    }
-  });
-  // rebuild visible index for lightbox
-  buildVisibleIndex();
-}
-
 // ─── LIGHTBOX ───
 let visibleItems = [];
 let currentLbIdx = 0;
 
 function buildVisibleIndex() {
-  visibleItems = Array.from(document.querySelectorAll('.masonry-item:not(.hidden)'));
+  visibleItems = Array.from(document.querySelectorAll('.masonry-item'));
 }
 buildVisibleIndex();
 
