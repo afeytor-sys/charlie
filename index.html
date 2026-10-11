@@ -201,7 +201,7 @@
 
     /* ─── VIDEO ─── */
     #video-section { background: var(--black); }
-    .video-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .video-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 3rem; align-items: center; }
     .video-wrapper {
       position: relative; border-radius: 22px; overflow: hidden;
       border: 1px solid rgba(255,255,255,0.07);
@@ -214,6 +214,13 @@
       background: linear-gradient(135deg, rgba(253,113,0,0.08) 0%, transparent 50%);
       pointer-events: none; z-index: 1;
     }
+    .video-ki-hint {
+      position: absolute; right: 4%; bottom: max(16%, 54px); z-index: 2;
+      font-size: 0.62rem; letter-spacing: 0.04em; color: rgba(255,255,255,0.75);
+      text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+      pointer-events: none; opacity: 0; transition: opacity 0.2s;
+    }
+    .video-ki-hint.show { opacity: 1; }
     .video-text p { font-size: 0.97rem; color: rgba(245,242,238,0.55); line-height: 1.75; font-weight: 300; margin-bottom: 1.8rem; }
     .video-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
     .chip { background: rgba(253,113,0,0.08); border: 1px solid rgba(253,113,0,0.18); border-radius: 50px; padding: 0.35rem 0.9rem; font-size: 0.78rem; color: var(--accent); font-weight: 600; }
@@ -358,6 +365,7 @@
             <source src="videos/charlie video 1.mp4" type="video/mp4"/>
             Ihr Browser unterstützt kein Video.
           </video>
+          <span class="video-ki-hint" id="videoKiHint">Szene KI-generiert</span>
         </div>
         <div class="video-text reveal">
           <span class="section-tag">In Aktion</span>
@@ -490,6 +498,23 @@
 <a href="kontakt.html" class="fab" title="Anfragen">📋</a>
 <script src="main.js"></script>
 <script>
+// KI-Hinweis nur während der KI-generierten Szene einblenden
+(function () {
+  const v = document.querySelector('.video-wrapper video');
+  const hint = document.getElementById('videoKiHint');
+  const KI_START = 46.57, KI_END = 51.2;
+  let raf = 0;
+  function update() {
+    hint.classList.toggle('show', v.currentTime >= KI_START && v.currentTime < KI_END);
+  }
+  function loop() {
+    update();
+    raf = (!v.paused && !v.ended) ? requestAnimationFrame(loop) : 0;
+  }
+  v.addEventListener('play', () => { if (!raf) loop(); });
+  ['seeked', 'timeupdate'].forEach(e => v.addEventListener(e, update));
+})();
+
 const hPhotos = [
   'fotos/charlie-werkbank-messen.jpg',
   'fotos/charlie-werkstatt-treppe.jpg',
