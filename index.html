@@ -498,14 +498,15 @@
 <a href="kontakt.html" class="fab" title="Anfragen">📋</a>
 <script src="main.js"></script>
 <script>
-// KI-Hinweis nur während der KI-generierten Szene einblenden
+// KI-Hinweis nur während der KI-generierten Szenen einblenden
 (function () {
   const v = document.querySelector('.video-wrapper video');
   const hint = document.getElementById('videoKiHint');
-  const KI_START = 46.57, KI_END = 51.2;
+  const KI_SCENES = [[12.27, 13.5], [22.7, 23.6], [46.57, 51.2]];
   let raf = 0;
   function update() {
-    hint.classList.toggle('show', v.currentTime >= KI_START && v.currentTime < KI_END);
+    const t = v.currentTime;
+    hint.classList.toggle('show', KI_SCENES.some(([a, b]) => t >= a && t < b));
   }
   function loop() {
     update();
